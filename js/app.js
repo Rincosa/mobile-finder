@@ -1,3 +1,4 @@
+// loadPhones section
 const loadPhones= async(searchText, dataLimit) =>{
     const url= `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
     const res= await fetch(url);
@@ -5,7 +6,7 @@ const loadPhones= async(searchText, dataLimit) =>{
     displayPhones(data.data, dataLimit);
 }
 
-
+// DisplayPhones section
 const displayPhones= (phones, dataLimit)=>{
     const phonesContainer= document.getElementById('phones-container');
     phonesContainer.textContent='';
@@ -50,6 +51,7 @@ const displayPhones= (phones, dataLimit)=>{
     
 }
 
+// ProcessSearch section
 const processSearch= (dataLimit) =>{
   toggleSpinner(true);
   const searchField= document.getElementById('search-field');
@@ -82,6 +84,7 @@ document.getElementById('btn-show-all').addEventListener('click',function(){
   processSearch();
 })
 
+// LoadPhoneDetails section
 const loadPhoneDetails= async id =>{
   const url = `https://openapi.programming-hero.com/api/phone/${id}`;
   const res= await fetch(url);
@@ -89,6 +92,7 @@ const loadPhoneDetails= async id =>{
   displayPhoneDetails(data.data);
 }
 
+// DisplayPhoneDetails section
 const displayPhoneDetails= phoneData=>{
   const modalTitle= document.getElementById('phoneDetailModalLabel');
   modalTitle.innerText= phoneData.name;
@@ -97,8 +101,17 @@ const displayPhoneDetails= phoneData=>{
   <div class="text-center">
   <img src="${phoneData.image ? phoneData.image : 'no image found'}"/>
   </div>
+  <div class="text-center">
   <p>Release Date: ${phoneData.releaseDate ? phoneData.releaseDate : 'no release date found'}</p>
+  <p class="fw-bold">Main Features</p>
   <p>Storage: ${phoneData.mainFeatures ? phoneData.mainFeatures.storage : 'No storage found'}</p>
-  <p>Others: ${phoneData.others ? phoneData.others.Bluetooth : 'No Bluetooth found'}</p>
+  <p>ChipSet: ${phoneData.mainFeatures ? phoneData.mainFeatures.chipSet : 'No chipSet found'}</p>
+  <p>DisplaySize: ${phoneData.mainFeatures ? phoneData.mainFeatures.displaySize : 'No displaySize found'}</p>
+  <p>Memory: ${phoneData.mainFeatures ? phoneData.mainFeatures.memory : 'No memory found'}</p>
+  <p class="fw-bold">Sensor</p>
+  <p>${phoneData.mainFeatures ? phoneData.mainFeatures.sensors : 'No sensors found'}</p>
+  <p class="fw-bold">Others</p>
+  <p>Bluetooth: ${phoneData.others ? phoneData.others.Bluetooth : 'No Bluetooth found'}</p>
+  </div>
   `;
 }
