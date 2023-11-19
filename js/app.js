@@ -93,7 +93,11 @@ const displayPhoneDetails= phoneData=>{
   const modalTitle= document.getElementById('phoneDetailModalLabel');
   modalTitle.innerText= phoneData.name;
   const phoneDetails= document.getElementById('phone-details');
-  phoneDetails.innerHTML=`<p>Release Date: ${phoneData.releaseDate ? phoneData.releaseDate : 'no release date found'}</p>
+  phoneDetails.innerHTML=`
+  <div class="text-center">
+  <img src="${phoneData.image ? phoneData.image : 'no image found'}"/>
+  </div>
+  <p>Release Date: ${phoneData.releaseDate ? phoneData.releaseDate : 'no release date found'}</p>
   <p>Storage: ${phoneData.mainFeatures ? phoneData.mainFeatures.storage : 'No storage found'}</p>
   <p>Others: ${phoneData.others ? phoneData.others.Bluetooth : 'No Bluetooth found'}</p>
   `;
