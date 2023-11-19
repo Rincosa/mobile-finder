@@ -11,7 +11,7 @@ const displayPhones= (phones, dataLimit)=>{
     phonesContainer.textContent='';
     const showAll= document.getElementById('show-all');
     if(dataLimit && phones.length>3){
-      phones= phones.slice(0,2);
+      phones= phones.slice(0,20);
       showAll.classList.remove('d-none');
     }
     else{
@@ -58,13 +58,13 @@ const processSearch= (dataLimit) =>{
 }
 
 document.getElementById('btn-search').addEventListener('click', function(){
-  processSearch(3);
+  processSearch(20);
 })
 
 document.getElementById('search-field').addEventListener('keypress',function(e){
 
   if(e.key=== 'Enter'){
-    processSearch(3);
+    processSearch(20);
   }
 });
 
